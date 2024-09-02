@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sub_etiquetas" printOrder="Horizontal" pageWidth="297" pageHeight="70" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="14be47fe-fefc-49c2-98b6-efa5bca2df6c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Barcode" hTextAlign="Center" hImageAlign="Center" vTextAlign="Middle" vImageAlign="Middle" fontName="CIA Code 128 Medium" fontSize="12"/>
+	<style name="FontArial" fontName="DejaVu Sans" fontSize="5" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="produtoId" class="java.lang.Long"/>
+	<field name="prodDescr" class="java.lang.String"/>
+	<field name="codBarras" class="java.lang.String"/>
+	<field name="preco" class="java.math.BigDecimal"/>
+	<field name="refFornecedor" class="java.lang.String"/>
+	<field name="marcaSigla" class="java.lang.String"/>
+	<field name="itemAtribGrade2" class="java.lang.String"/>
+	<field name="itemAtribGrade3" class="java.lang.String"/>
+	<field name="itemAtribGrade1" class="java.lang.String"/>
+	<detail>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement style="FontArial" x="16" y="52" width="92" height="9" uuid="94363ccb-ad89-4536-be2c-c8da3b55770d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcaSigla}+" - "+$F{itemAtribGrade2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FontArial" x="16" y="13" width="92" height="32" uuid="c576ea60-32bf-4795-8c1a-2cfd198bd105">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["R$ " + $F{preco}.setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="1" width="64" height="12" uuid="59f8430b-ed37-451e-ac87-eb309090c886"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refFornecedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="61" width="92" height="7" uuid="ae25b791-e7ab-4591-b51f-86c09cda2db4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="5" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Calzature TF"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FontArial" x="120" y="25" width="148" height="8" uuid="66d9645d-ef7e-40ee-a132-b877cbcdbd2d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prodDescr}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement style="Barcode" positionType="Float" x="120" y="33" width="148" height="25" uuid="daed16f2-3005-4002-960d-ea14a651c80f">
+					<property name="com.jaspersoft.studio.unit.barHeight" value="px"/>
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+					<printWhenExpression><![CDATA[$F{codBarras} != null]]></printWhenExpression>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="60">
+					<jr:codeExpression><![CDATA[$F{codBarras}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement style="FontArial" x="184" y="1" width="59" height="12" uuid="c53a46f3-bb75-4824-a8bf-778c30792b8a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["R$ " + $F{preco}.setScale(2, java.math.RoundingMode.HALF_UP)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="58" width="148" height="10" uuid="80485562-36b7-4eef-89cd-99451539b694"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codBarras}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="109" y="1" width="1" height="67" uuid="95be1fdd-d426-4a45-addf-0d99c6f2b77b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="111" y="1" width="7" height="67" uuid="a4160606-4bf1-4418-99ef-68d3cea34c15"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="Left">
+					<font fontName="DejaVu Sans" size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CALZATURE TF"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="16" y="1" width="92" height="11" uuid="3ea89a99-aba0-4553-87cb-ccad0f6926b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{refFornecedor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyMM">
+				<reportElement x="268" y="22" width="13" height="46" uuid="1c2ac69d-0f7b-494d-9de2-e4fa29c53ae5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="14" width="40" height="11" uuid="cfddd0e1-0849-4eba-9196-88603505e158"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marcaSigla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="14" width="83" height="11" uuid="e0c5f5a9-f675-4e37-ac62-1a23404b6646"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemAtribGrade1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="243" y="2" width="38" height="18" uuid="e2100867-68d7-43eb-8196-ec59657aad0e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemAtribGrade2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FontArial" x="16" y="45" width="92" height="7" uuid="227ab009-7a5c-4d4f-aed9-70dd19fe3ad4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="6" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{itemAtribGrade1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
